@@ -1,0 +1,281 @@
+:root {
+  --bg: #eef5f7;
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-solid: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --line: rgba(15, 23, 42, 0.08);
+  --accent: #0f766e;
+  --accent-dark: #115e59;
+  --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+  --radius: 24px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top, #ffffff 0%, #f7fbfc 42%, var(--bg) 100%);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+.site-shell {
+  width: min(1120px, calc(100% - 1rem));
+  margin: 0 auto;
+  padding: 0.75rem 0 2rem;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 0 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand img {
+  width: min(230px, 65vw);
+  height: auto;
+}
+
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.top-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: clamp(0.95rem, 1.8vw, 1rem);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  touch-action: manipulation;
+}
+
+.top-nav a:hover,
+.top-nav a:focus-visible {
+  background: rgba(15, 118, 110, 0.16);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.panel {
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.home-grid,
+.recipe-layout {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.home-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.recipe-layout {
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  align-items: start;
+}
+
+.card,
+.recipe-content,
+.tip-box {
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.card h3,
+.recipe-content h2 {
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+  font-size: clamp(1.3rem, 2.4vw, 2rem);
+}
+
+.card p,
+.recipe-content p,
+.instructions li,
+.tip-box {
+  font-size: clamp(1rem, 1.8vw, 1.08rem);
+}
+
+.hero-image,
+.recipe-image {
+  margin-top: 1.5rem;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.hero-image img,
+.recipe-image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.hero-image img {
+  aspect-ratio: 16 / 9;
+}
+
+.recipe-image img {
+  aspect-ratio: 4 / 3;
+}
+
+.tip-box {
+  background: linear-gradient(180deg, #f1fbfa 0%, #e8f7f5 100%);
+  color: #12413d;
+  font-weight: 600;
+}
+
+.ingredients p {
+  margin: 0.35rem 0;
+}
+
+.instructions {
+  margin: 0.75rem 0 0 1.25rem;
+  padding: 0;
+}
+
+.instructions li + li {
+  margin-top: 0.55rem;
+}
+
+.author {
+  margin-top: 1.25rem;
+}
+
+.author a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.author a:hover,
+.author a:focus-visible {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.signature {
+  margin: 1.5rem 0 0.25rem;
+  text-align: center;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .top-nav {
+    justify-content: flex-start;
+  }
+
+  .home-grid,
+  .recipe-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .brand img {
+    width: min(220px, 70vw);
+  }
+}
+
+@media (max-width: 640px) {
+  .site-shell {
+    width: min(100% - 0.75rem, 1120px);
+    padding-top: 0.4rem;
+  }
+
+  .panel {
+    border-radius: 20px;
+    padding: 1rem;
+  }
+
+  .top-nav {
+    width: 100%;
+  }
+
+  .top-nav a {
+    width: calc(50% - 0.25rem);
+  }
+
+  .hero-image img,
+  .recipe-image img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .card h3,
+  .recipe-content h2 {
+    font-size: 1.25rem;
+  }
+
+  .instructions {
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-nav a {
+    width: 100%;
+  }
+}
